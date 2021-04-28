@@ -10,5 +10,9 @@ import EP2_5
 import EP2_6
 
 for n, item in enumerate(cria_baralho()):
+    
     print(n + 1, item)
+
 carta_desejada = int(input('Digite o número da carta desejada:'))
+
+verifica = EP2_4.lista_movimentos_possiveis(cria_baralho(),carta_desejada)
