@@ -9,7 +9,6 @@ import EP2_4
 import EP2_5
 import EP2_6
 
-lista = cria_baralho
 for n, item in enumerate(cria_baralho()):
     print(n + 1, item)
 carta_desejada = int(input('Digite o número da carta desejada:'))
