@@ -39,3 +39,8 @@ for n, item in enumerate(cria_baralho()):
 carta_desejada = int(input('Digite o número da carta desejada:'))
 
 verifica = EP2_4.lista_movimentos_possiveis(cria_baralho(),carta_desejada)
+
+ho = True
+
+if verifica == [1,3]:
+    escolha = int(input('Qual carta você deseja empilhar o {0}?'.format(carta_desejada[indice]),'Digite o numero da carta:'))
