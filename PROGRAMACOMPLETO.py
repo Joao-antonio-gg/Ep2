@@ -33,14 +33,24 @@ print('')
 print('')
 
 for n, item in enumerate(cria_baralho()):
-    
+    y = n + 1
     print(n + 1, item)
 
-carta_desejada = int(input('Digite o número da carta desejada:'))
+while len(cria_baralho()) > 1 and EP2_6.possui_movimentos_possiveis(cria_baralho()) == True:
 
-verifica = EP2_4.lista_movimentos_possiveis(cria_baralho(),carta_desejada)
+    carta_desejada = int(input('Digite o número da carta desejada:'))
+
+    while carta_desejada > len(cria_baralho()) or carta_desejada <= 0:
+        print('Essa carta é invalida, digite uma carta valida.')
+        carta_desejada = int(input('Digite o número da carta desejada:'))
+    
+    indice_carta = carta_desejada - 1
+    verifica = EP2_4.lista_movimentos_possiveis(cria_baralho(),indice_carta)
+    indice_igual_carta = cria_baralho()[indice_carta]
+    
 
 ho = True
 
-if verifica == [1,3]:
+if verifica == [1,3] :
     escolha = int(input('Qual carta você deseja empilhar o {0}?'.format(carta_desejada[indice]),'Digite o numero da carta:'))
+    
