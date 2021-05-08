@@ -69,15 +69,20 @@ while Restart :
             
         
         if verifica_funcionamento == [1,3]:
-            Qual_carta = int(input('Qual carta deseja empilhar ?')) - 1
-            print (Qual_carta)
-            print (indice_carta)
+            Qual_carta = int(input('Qual carta deseja empilhar ?({0} ou {1})'.format(indice_carta, indice_carta - 2))) - 1
+            # print (Qual_carta)
+            # print (indice_carta)
             if Qual_carta == indice_carta - 3 or Qual_carta == indice_carta - 1 :
                 for n, item in enumerate(EP2_5.empilha(cartas, indice_carta , Qual_carta)):
                     print (n+1 , item)
-            #if Qual_carta != indice_carta - 3 or Qual_carta != indice_carta - 1:
-                #pergunta_novamente = int(input('Carta invalida, digite uma carta valida:'))
-            # EP2_5.empilha(cartas, indice_carta , pergunta_novamente)
+
+            while Qual_carta != indice_carta - 3 or Qual_carta != indice_carta - 1:
+
+                pergunta_novamente = int(input('Carta invalida, digite uma carta valida:')) - 1
+
+                if pergunta_novamente == indice_carta - 3 or pergunta_novamente == indice_carta - 1 :
+                    for n, item in enumerate(EP2_5.empilha(cartas, indice_carta , pergunta_novamente)):
+                        print (n+1 , item)
 
         if len(cartas) == 1 and EP2_6.possui_movimentos_possiveis(cartas) != True:
             print ('Fim do jogo')
