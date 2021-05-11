@@ -8,6 +8,7 @@ import EP2_3
 import EP2_4
 import EP2_5
 import EP2_6
+import Cores
 
 print('')
 print('Paciência Acordeão')
@@ -35,18 +36,18 @@ print('')
 cartas = cria_baralho()
 for n, item in enumerate(cartas):
     y = n + 1
-    print(n + 1, item)
+    print(('{0}'.format(y))+ ' ' + Cores.cores(item))
 
 Restart = True    
 while Restart :
     
     while len(cartas) > 1 and EP2_6.possui_movimentos_possiveis(cartas) == True:
 
-        carta_desejada = int(input('Digite o número da carta desejada:'))
+        carta_desejada = int(input('Digite o número da carta desejada de {0} a {1}:'.format(1, len(cartas))))
 
-        # if carta_desejada > len(cartas) or carta_desejada <= 0:
-        #     print('Essa carta é invalida, digite uma carta valida.')
-        #     carta_desejada = int(input('Digite o número da carta desejada:'))
+        while carta_desejada > len(cartas) or carta_desejada <= 0:
+            print('Essa carta é invalida, digite uma carta valida.')
+            carta_desejada = int(input('Digite o número da carta desejada de {0} a {1}:'.format(1, len(cartas))))
         
         indice_carta = carta_desejada - 1
         verifica_funcionamento = EP2_4.lista_movimentos_possiveis(cartas,indice_carta)
@@ -59,30 +60,52 @@ while Restart :
         
         if verifica_funcionamento == [1] :
             for n, item in enumerate(EP2_5.empilha(cartas, indice_carta , indice_carta - 1)):
-                print (n + 1, item)
+                y = n + 1
+                print(('{0}'.format(y))+ ' ' + Cores.cores(item))
             
         
         
         if verifica_funcionamento == [3]:
             for n, item in enumerate(EP2_5.empilha(cartas, indice_carta , indice_carta - 3)):
-                print (n + 1, item)
+                y = n + 1
+                print(('{0}'.format(y))+ ' ' + Cores.cores(item))
             
         
         if verifica_funcionamento == [1,3]:
-            Qual_carta = int(input('Qual carta deseja empilhar ?({0} ou {1})'.format(indice_carta, indice_carta - 2))) - 1
-            # print (Qual_carta)
-            # print (indice_carta)
-            if Qual_carta == indice_carta - 3 or Qual_carta == indice_carta - 1 :
-                for n, item in enumerate(EP2_5.empilha(cartas, indice_carta , Qual_carta)):
-                    print (n+1 , item)
+            n_pod = True
+            while n_pod:
+                Qual_carta1 = int(input('Qual carta deseja empilhar ({0} ou {1})?'.format(indice_carta, indice_carta - 2)))
+                Qual_carta = Qual_carta1 - 1
 
-            while Qual_carta != indice_carta - 3 or Qual_carta != indice_carta - 1:
+                if Qual_carta == indice_carta - 3 or Qual_carta == indice_carta - 1:
+                    for n, item in enumerate(EP2_5.empilha(cartas, indice_carta , Qual_carta)):
+                        y = n + 1
+                        print(('{0}'.format(y))+ ' ' + Cores.cores(item))
+                    n_pod = False
+                else:
+                    print('Essa carta é inválida, digite outra carta')
+                    n_pod = True
 
-                pergunta_novamente = int(input('Carta invalida, digite uma carta valida:')) - 1
 
-                if pergunta_novamente == indice_carta - 3 or pergunta_novamente == indice_carta - 1 :
-                    for n, item in enumerate(EP2_5.empilha(cartas, indice_carta , pergunta_novamente)):
-                        print (n+1 , item)
+            # while Qual_carta != indice_carta - 3 or Qual_carta != indice_carta - 1:
+                
+            #     Qual_carta = int(input('Carta invalida, digite uma carta valida:')) - 1
+
+            #     # if Qual_carta != indice_carta - 1 or Qual_carta != indice_carta - 3:
+
+            #     #     Qual_carta = int(input('Carta invalida, digite uma carta valida:')) - 1
+
+            #     if Qual_carta == indice_carta - 1:
+            #         for n, item in enumerate(EP2_5.empilha(cartas, indice_carta , indice_carta - 1)):
+            #             y = n + 1
+            #             print(('{0}'.format(y))+ ' ' + Cores.cores(item))
+
+            #     if Qual_carta == indice_carta - 3:
+            #         for n, item in enumerate(EP2_5.empilha(cartas, indice_carta , indice_carta - 3)):
+            #             y = n + 1
+            #             print(('{0}'.format(y))+ ' ' + Cores.cores(item))
+
+
 
         if len(cartas) == 1 and EP2_6.possui_movimentos_possiveis(cartas) != True:
             print ('Fim do jogo')
@@ -91,7 +114,7 @@ while Restart :
                 Restart = True
                 for n, item in enumerate(cartas):
                     y = n + 1
-                    print(n + 1, item)
+                    print(('{0}'.format(y))+ ' ' + Cores.cores(item))
             else:
                 Restart = False
             
