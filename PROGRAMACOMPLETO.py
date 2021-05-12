@@ -107,8 +107,19 @@ while Restart :
 
 
 
-        if len(cartas) == 1 and EP2_6.possui_movimentos_possiveis(cartas) != True:
-            print ('Fim do jogo')
+        if len(cartas) == 1:
+            print ('Você ganhou! YOU WIN!')
+            jogar_nv = input('Você deseja jogar novamente ?(s/n) ')
+            if jogar_nv == 's':
+                Restart = True
+                for n, item in enumerate(cartas):
+                    y = n + 1
+                    print(('{0}'.format(y))+ ' ' + Cores.cores(item))
+            else:
+                Restart = False
+        
+        if EP2_6.possui_movimentos_possiveis(cartas) == False:
+            print ('Você perdeu! YOU LOSE!')
             jogar_nv = input('Você deseja jogar novamente ?(s/n) ')
             if jogar_nv == 's':
                 Restart = True
