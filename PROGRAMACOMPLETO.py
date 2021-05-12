@@ -10,37 +10,43 @@ import EP2_5
 import EP2_6
 import Cores
 
-print('')
-print('Paciência Acordeão')
-print('')
-print('=====================')
-print('')
-print('O objetivo deste jogo é colocar todas as cartas em uma mesma pilha')
-print('')
-print('Existem apenas dois movimentos possíveis:')
-print('')
-print('1 - Empilhar uma carta sobre a carta imediatamente anterior.')
-print('2 - Empilhar uma carta sobre a terceira carta anterior.')
-print('')
-print('Para que um movimento possa ser realizado basta que uma das duas condições abaixo seja atendida:')
-print('')
-print('1 - As duas cartas possuem o mesmo valor')
-print('     ou    ')
-print('2 - As duas cartas possuem o mesmo naipe ')
-print('Desde que alguma das condições acima seja satisfeita, qualquer carta pode ser movimentada')
-print('')
-print('Boa sorte e Bom Jogo!')
-print('')
-print('')
-
 cartas = cria_baralho()
-for n, item in enumerate(cartas):
-    y = n + 1
-    print(('{0}'.format(y))+ ' ' + Cores.cores(item))
-
 Restart = True    
 while Restart :
-    
+
+
+    print('')
+    print('Paciência Acordeão')
+    print('')
+    print('=====================')
+    print('')
+    print('O objetivo deste jogo é colocar todas as cartas em uma mesma pilha')
+    print('')
+    print('Existem apenas dois movimentos possíveis:')
+    print('')
+    print('1 - Empilhar uma carta sobre a carta imediatamente anterior.')
+    print('2 - Empilhar uma carta sobre a terceira carta anterior.')
+    print('')
+    print('Para que um movimento possa ser realizado basta que uma das duas condições abaixo seja atendida:')
+    print('')
+    print('1 - As duas cartas possuem o mesmo valor')
+    print('     ou    ')
+    print('2 - As duas cartas possuem o mesmo naipe ')
+    print('Desde que alguma das condições acima seja satisfeita, qualquer carta pode ser movimentada')
+    print('')
+    print('Boa sorte e Bom Jogo!')
+    print('')
+    print('')
+
+
+    #cartas = cria_baralho()
+    for n, item in enumerate(cartas):
+        y = n + 1
+        print(('{0}'.format(y))+ ' ' + Cores.cores(item))
+
+    # Restart = True    
+    # while Restart :
+        
     while len(cartas) > 1 and EP2_6.possui_movimentos_possiveis(cartas) == True:
 
         carta_desejada = int(input('Digite o número da carta desejada de {0} a {1}:'.format(1, len(cartas))))
@@ -112,21 +118,28 @@ while Restart :
             jogar_nv = input('Você deseja jogar novamente ?(s/n) ')
             if jogar_nv == 's':
                 Restart = True
+                cartas = cria_baralho()
                 for n, item in enumerate(cartas):
                     y = n + 1
                     print(('{0}'.format(y))+ ' ' + Cores.cores(item))
             else:
+                print ('Boa sorte da proxima vez')
                 Restart = False
+                break
         
-        if EP2_6.possui_movimentos_possiveis(cartas) == False:
+        if EP2_6.possui_movimentos_possiveis(cartas) == False :
             print ('Você perdeu! YOU LOSE!')
             jogar_nv = input('Você deseja jogar novamente ?(s/n) ')
             if jogar_nv == 's':
                 Restart = True
+                cartas =cria_baralho()
                 for n, item in enumerate(cartas):
                     y = n + 1
                     print(('{0}'.format(y))+ ' ' + Cores.cores(item))
             else:
+                print ('Boa sorte da proxima vez')
                 Restart = False
+                break
+                
             
 
